@@ -14,9 +14,10 @@ from reportlab.lib import colors
 # LOGIN SYSTEM & ROLE-BASED ACCESS
 # -----------------------------------------
 USERS = {
-    "admin": {"password": "admin123", "role": "Yash"},
+    "admin": {"password": "admin123", "role": "admin"},
     "user": {"password": "user123", "role": "user"}
 }
+
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "username" not in st.session_state:
@@ -25,7 +26,7 @@ if "role" not in st.session_state:
     st.session_state.role = ""
 
 def login():
-    st.title("🌾 Agro Grain Export Calculator and Estimetor- Login Section")
+    st.title("🌾 Grain Export Calculator - Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
@@ -36,6 +37,7 @@ def login():
             st.success(f"Logged in as {username} ({st.session_state.role})")
         else:
             st.error("Invalid credentials. Please try again.")
+
 if not st.session_state.logged_in:
     login()
     st.stop()
@@ -43,24 +45,10 @@ if not st.session_state.logged_in:
 # -----------------------------------------
 # APP CONFIGURATION & STYLE
 # -----------------------------------------
-st.set_page_config(page_title="🌾 Agro Grain Export Calculator and Estimetorr", layout="wide")
+st.set_page_config(page_title="Grain Export Calculator", layout="wide")
 
-def set_bg_base64(img_path):
-    try:
-        with open(img_path, "rb") as img_file:
-            encoded = base64.b64encode(img_file.read()).decode()
-        background_css = f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/png;base64,{encoded}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }}
-        </style>
-        """
-        def set_bg_from_url(image_url):
+# Use a web URL for the background image
+def set_bg_from_url(image_url):
     background_css = f"""
     <style>
     .stApp {{
@@ -74,9 +62,10 @@ def set_bg_base64(img_path):
     """
     st.markdown(background_css, unsafe_allow_html=True)
 
-# Call the function with your web URL
+# Replace with your preferred public image URL:
 set_bg_from_url("https://cbeditz.com/public/cbeditz/preview/agriculture-powerpoint-presentation-background-19-11614416076abiktlbxpz.jpg")
 
+# Enhanced custom CSS & fonts from Google Fonts
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -335,12 +324,10 @@ elif nav_option == "Forecasting" and st.session_state.role == "admin":
 elif nav_option == "Product Management":
     st.header("Product Management")
     st.markdown("Manage your products below. You can update details or add a new product.")
-    
     # Display current products using st.dataframe (non-editable)
     df_products = pd.DataFrame(st.session_state.products_list).transpose().reset_index()
     df_products.rename(columns={"index": "Product", "Category": "Category", "Unit": "Unit"}, inplace=True)
     st.dataframe(df_products)
-    
     st.markdown("### Add a New Product")
     with st.form("new_product_form"):
         new_product_name = st.text_input("Product Name")
