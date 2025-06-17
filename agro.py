@@ -26,7 +26,7 @@ if "role" not in st.session_state:
     st.session_state.role = ""
 
 def login():
-    st.title("🌾 Grain Export Calculator - Login")
+    st.title("🌾 Agro Grain Export Calculator and Estimetor- Login Section")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
@@ -45,7 +45,7 @@ if not st.session_state.logged_in:
 # -----------------------------------------
 # APP CONFIGURATION & STYLE
 # -----------------------------------------
-st.set_page_config(page_title="Grain Export Calculator", layout="wide")
+st.set_page_config(page_title="Agro Grain Export Calculator and Estimetor", layout="wide")
 
 # Use a web URL for the background image
 def set_bg_from_url(image_url):
@@ -165,7 +165,7 @@ nav_option = st.sidebar.radio("Navigate", nav_options, index=0)
 # DASHBOARD SCREEN (Overview)
 # -----------------------------------------
 if nav_option == "Dashboard":
-    st.markdown('<h1 class="header-title">🌾 Grain Export Calculator</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="header-title">🌾 Agro Grain Export Calculator and Estimetor</h1>', unsafe_allow_html=True)
     st.markdown("<h4 style='text-align: center;'>Export Pricing Dashboard</h4>", unsafe_allow_html=True)
     col1, col2, col3, col4 = st.columns(4)
     def metric_card(title, value, icon=""):
