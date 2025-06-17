@@ -63,7 +63,7 @@ def set_bg_base64(img_path):
         st.markdown(background_css, unsafe_allow_html=True)
     except Exception as e:
         st.error(f"Error loading background image: {e}")
-set_bg_base64("C:/Users/Yashveer singh/agriculture-powerpoint-presentation-background-19-11614416076abiktlbxpz.jpg")
+set_bg_base64("https://cbeditz.com/public/cbeditz/preview/agriculture-powerpoint-presentation-background-19-11614416076abiktlbxpz.jpg")
 
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
