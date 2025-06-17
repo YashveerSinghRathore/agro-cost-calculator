@@ -14,7 +14,7 @@ from reportlab.lib import colors
 # LOGIN SYSTEM & ROLE-BASED ACCESS
 # -----------------------------------------
 USERS = {
-    "admin": {"password": "admin123", "role": "admin"},
+    "Yash": {"password": "yash123", "role": "admin"},
     "user": {"password": "user123", "role": "user"}
 }
 
