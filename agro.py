@@ -60,10 +60,22 @@ def set_bg_base64(img_path):
         }}
         </style>
         """
-        st.markdown(background_css, unsafe_allow_html=True)
-    except Exception as e:
-        st.error(f"Error loading background image: {e}")
-set_bg_base64("https://cbeditz.com/public/cbeditz/preview/agriculture-powerpoint-presentation-background-19-11614416076abiktlbxpz.jpg")
+        def set_bg_from_url(image_url):
+    background_css = f"""
+    <style>
+    .stApp {{
+        background-image: url("{image_url}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(background_css, unsafe_allow_html=True)
+
+# Call the function with your web URL
+set_bg_from_url("https://cbeditz.com/public/cbeditz/preview/agriculture-powerpoint-presentation-background-19-11614416076abiktlbxpz.jpg")
 
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
